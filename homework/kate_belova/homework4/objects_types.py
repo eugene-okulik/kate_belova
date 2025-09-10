@@ -31,7 +31,7 @@ print(f'The most interesting in Python development: {my_dict['tuple'][-1]}\n')
 my_dict['list'].append('Беларуская')
 del my_dict['list'][1]
 
-my_dict['dict']['i am a tuple'] = ('Peace', 'Love', '&', 'Understanding')
+my_dict['dict']['i am a tuple'] = ['Peace', 'Love', '&', 'Understanding']
 del my_dict['dict']['Дмитрий Глуховский']
 
 my_dict['set'].add(1000)
