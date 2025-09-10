@@ -1,10 +1,13 @@
 from pprint import pprint
 
 my_dict = {
-    # fmt: off
-    'tuple': ('Django', 'FastAPI', 'Telegram Bots',
-              'Machine Learning', 'QA Automation'),
-    # fmt: on
+    'tuple': (
+        'Django',
+        'FastAPI',
+        'Telegram Bots',
+        'Machine Learning',
+        'QA Automation',
+    ),
     'list': ['English', '直線移動', 'Русский', 'Deutsch', 'Українська'],
     'dict': {
         'Stephen King': [
