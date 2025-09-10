@@ -1,5 +1,3 @@
-from pprint import pprint
-
 my_dict = {
     'tuple': (
         'Django',
@@ -37,4 +35,4 @@ del my_dict['dict']['Дмитрий Глуховский']
 my_dict['set'].add(1000)
 my_dict['set'].remove(34)
 
-pprint(my_dict)
+print(my_dict)
