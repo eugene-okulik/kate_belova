@@ -1,11 +1,10 @@
+from pprint import pprint
+
 my_dict = {
-    'tuple': (
-        'Django',
-        'FastAPI',
-        'Telegram Bots',
-        'Machine Learning',
-        'QA Automation',
-    ),
+    # fmt: off
+    'tuple': ('Django', 'FastAPI', 'Telegram Bots',
+              'Machine Learning', 'QA Automation'),
+    # fmt: on
     'list': ['English', '直線移動', 'Русский', 'Deutsch', 'Українська'],
     'dict': {
         'Stephen King': [
@@ -29,10 +28,10 @@ print(f'The most interesting in Python development: {my_dict['tuple'][-1]}\n')
 my_dict['list'].append('Беларуская')
 del my_dict['list'][1]
 
-my_dict['dict']['i am a tuple'] = ['Peace', 'Love', '&', 'Understanding']
+my_dict['dict'][('i am a tuple',)] = ('Peace', 'Love', '&', 'Understanding')
 del my_dict['dict']['Дмитрий Глуховский']
 
 my_dict['set'].add(1000)
 my_dict['set'].remove(34)
 
-print(my_dict)
+pprint(my_dict)
