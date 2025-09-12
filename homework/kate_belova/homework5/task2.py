@@ -5,5 +5,4 @@ lines = [
 ]
 
 for line in lines:
-    num = int(line.split(':')[1].strip()) + 10
-    print(num)
+    print(int(line[line.index(':') + 1 :].strip()) + 10)
