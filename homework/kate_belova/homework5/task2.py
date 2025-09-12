@@ -5,4 +5,8 @@ lines = [
 ]
 
 for line in lines:
-    print(int(line[line.index(':') + 1 :].strip()) + 10)
+    colon_pos = line.index(':')
+    start = colon_pos + 1
+    num_str = line[start:].strip()
+    num = int(num_str) + 10
+    print(num)
