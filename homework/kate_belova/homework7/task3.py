@@ -1,10 +1,9 @@
-lines = [
-    'результат операции: 42',
-    'результат операции: 54',
-    'результат работы программы: 209',
-    'результат: 2',
-]
+def extract_number(lines: list) -> int | None:
+    for line in lines:
+        num = int(line.split(':')[1].strip())
+        return num
+    return None
 
-for line in lines:
-    num = int(line.split(':')[1].strip()) + 10
-    print(num)
+
+number = extract_number(input('Введите строки: ').split()) + 10
+print(number)
