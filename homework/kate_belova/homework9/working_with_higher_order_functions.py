@@ -8,7 +8,7 @@ hot_days = list(filter(lambda temp: temp > 28, temperatures))
 
 the_hottest = max(hot_days)
 the_less_hottest = min(hot_days)
-avg_hot = sum(temperatures) / len(temperatures)
+avg_hot = sum(hot_days) / len(hot_days)
 
 print(
     f'The hottest temperature: {the_hottest}\n'
