@@ -49,17 +49,13 @@ with mysql.connector.connect(**DB_CONFIG) as conn:
         'Playwright in Action',
         'Python Requests Essentials',
     ]
-    book_ids = []
     with conn.cursor() as cursor:
-        for title in books:
-            query = """
-                    INSERT INTO books (title, taken_by_student_id)
-                    VALUES (%s, %s)
-                    """
-            values = (title, student_id)
-            cursor.execute(query, values)
-            book_ids.append(cursor.lastrowid)
-        print('Book IDs:', *book_ids)
+        query = """
+                INSERT INTO books (title, taken_by_student_id)
+                VALUES (%s, %s)
+                """
+        values = [(title, student_id) for title in books]
+        cursor.executemany(query, values)
     conn.commit()
 
     # -------------------------------
@@ -101,12 +97,14 @@ with mysql.connector.connect(**DB_CONFIG) as conn:
     # -------------------------------
     # 7. Проставление студенту оценок
     marks = ['9', '8', '10', '9', '8', '10', '9', '10']
+    mark_values = [
+        (mark, lesson_id, student_id)
+        for lesson_id, mark in zip(lesson_ids, marks)
+    ]
     with conn.cursor() as cursor:
-        for lesson_id, mark in zip(lesson_ids, marks):
-            query = """INSERT INTO marks (value, lesson_id, student_id)
-                       VALUES (%s, %s, %s)"""
-            values = (mark, lesson_id, student_id)
-            cursor.execute(query, values)
+        query = """INSERT INTO marks (value, lesson_id, student_id)
+                   VALUES (%s, %s, %s)"""
+        cursor.executemany(query, mark_values)
     conn.commit()
 
     # -------------------------------
