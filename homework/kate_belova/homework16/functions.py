@@ -1,8 +1,8 @@
 def find_student(
     cursor, name: str, second_name: str
 ) -> tuple[int | None, int | None]:
-    query = """SELECT id, group_id FROM students 
-           WHERE name = %s AND second_name = %s 
+    query = """SELECT id, group_id FROM students
+           WHERE name = %s AND second_name = %s
            LIMIT 1"""
     values = (name, second_name)
     cursor.execute(query, values)
@@ -11,10 +11,9 @@ def find_student(
 
 
 def find_group(cursor, title: str) -> int | None:
-    query = """SELECT id FROM `groups` 
+    query = """SELECT id FROM `groups`
                WHERE title = %s
-               LIMIT 1
-            """
+               LIMIT 1"""
     values = (title,)
     cursor.execute(query, values)
     row = cursor.fetchone()
@@ -22,7 +21,7 @@ def find_group(cursor, title: str) -> int | None:
 
 
 def find_student_book(cursor, title: str, student_id: int) -> int | None:
-    query = """SELECT id FROM books 
+    query = """SELECT id FROM books
                WHERE title = %s AND taken_by_student_id = %s
                LIMIT 1"""
     values = (title, student_id)
@@ -32,7 +31,7 @@ def find_student_book(cursor, title: str, student_id: int) -> int | None:
 
 
 def find_subject(cursor, title: str) -> int | None:
-    query = """SELECT id FROM subjects 
+    query = """SELECT id FROM subjects
                WHERE title = %s
                LIMIT 1"""
     values = (title,)
@@ -54,10 +53,10 @@ def find_lesson(cursor, title: str, subject_id: int) -> int | None:
 def find_mark(
     cursor, value: str, lesson_id: int, student_id: int
 ) -> int | None:
-    query = """SELECT id FROM marks 
+    query = """SELECT id FROM marks
                WHERE value = %s
-               AND lesson_id = %s 
-               AND student_id = %s 
+               AND lesson_id = %s
+               AND student_id = %s
                LIMIT 1"""
     values = (value, lesson_id, student_id)
     cursor.execute(query, values)
