@@ -1,14 +1,16 @@
 import csv
 import mysql.connector
 
-from homework.kate_belova.homework15.config import DB_CONFIG
 # fmt: off
 from homework.kate_belova.homework16.functions import (
     find_student, find_group, find_student_book,
     find_subject, find_lesson, find_mark,
 )
 # fmt: on
-from homework.kate_belova.homework16.paths_and_variables import csv_path
+from homework.kate_belova.homework16.paths_and_variables import (
+    csv_path,
+    DB_CONFIG,
+)
 
 results = {
     'full': [],  # полностью совпавшие строки
