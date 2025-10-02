@@ -26,5 +26,5 @@ def new_object():
     """Создание объекта перед тестом и удаление после"""
     created = create_new_object(data)
     obj_id = created['id']
-    yield created
+    yield obj_id
     delete_object(obj_id)

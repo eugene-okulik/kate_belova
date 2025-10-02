@@ -16,6 +16,22 @@ data = {
     'name': faker.word().capitalize() + ' object',
 }
 
+data_empty_name = {
+    'data': {
+        'color': faker.safe_color_name(),
+        'size': random.choice(sizes),
+    },
+    'name': '',
+}
+
+data_special_chars = {
+    'data': {
+        'color': faker.safe_color_name(),
+        'size': random.choice(sizes),
+    },
+    'name': '@#$%^&*!',
+}
+
 update_data = {
     'data': {
         'group': random.randint(1, 20),
