@@ -1,13 +1,13 @@
 from pydantic import BaseModel, Field, model_validator
 
 
-class DataModel(BaseModel):
+class DataSchema(BaseModel):
     color: str = Field(description='Цвет объекта')
     size: str = Field(description='Размер объекта')
 
 
-class RequestObjectModel(BaseModel):
-    data: DataModel | None = Field(default=None, description='Данные объекта')
+class RequestObjectSchema(BaseModel):
+    data: DataSchema | None = Field(default=None, description='Данные объекта')
     name: str | None = Field(default=None, description='Название объекта')
 
     @model_validator(mode='after')
@@ -20,13 +20,13 @@ class RequestObjectModel(BaseModel):
         return values
 
 
-class ResponseObjectModel(BaseModel):
-    data: DataModel
+class ResponseObjectSchema(BaseModel):
+    data: DataSchema
     id: int = Field(description='Уникальный идентификатор объекта')
     name: str = Field(description='Название объекта')
 
 
-class ResponseObjectsList(BaseModel):
-    data: list[ResponseObjectModel] = Field(
-        description='Список объектов ResponseObjectModel'
+class ResponseObjectsSchema(BaseModel):
+    data: list[ResponseObjectSchema] = Field(
+        description='Список объектов ResponseObjectSchema'
     )

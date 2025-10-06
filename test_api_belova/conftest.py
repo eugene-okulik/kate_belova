@@ -1,7 +1,12 @@
 import pytest
 
-from test_api_belova.endpoints import CreateObject, DeleteObject
-from test_api_belova.models import RequestObjectModel
+from test_api_belova.endpoints import (
+    CreateObject,
+    DeleteObject,
+    GetObjects,
+    GetObject,
+)
+from test_api_belova.schemas import RequestObjectSchema
 from test_api_belova.test_data import create_data
 
 
@@ -20,20 +25,28 @@ def before_and_after_each():
 
 
 @pytest.fixture
-def object_data():
-    create_object_api = CreateObject()
-    create_object_data = RequestObjectModel(**create_data[0]).model_dump()
-    create_object_api.post_response(create_object_data)
+def get_objects_api():
+    return GetObjects()
 
-    create_object_api.assert_response_is_200()
-    create_object_api.assert_object_name(create_object_data)
-    create_object_api.assert_object_data(create_object_data)
 
-    id = create_object_api.id
-    yield create_object_data, id
+@pytest.fixture
+def get_object_api():
+    return GetObject()
 
-    id = create_object_api.id
-    delete_object_api = DeleteObject(id)
-    delete_object_api.delete_response()
-    delete_object_api.assert_response_is_200()
-    delete_object_api.assert_delete_message()
+
+@pytest.fixture
+def created_object():
+    create_api = CreateObject()
+    test_data = RequestObjectSchema(**create_data[0]).model_dump()
+    create_api.create_object(test_data)
+    obj_id = create_api.id
+
+    yield test_data, obj_id
+
+    delete_api = DeleteObject(obj_id)
+    delete_api.delete_object()
+
+
+@pytest.fixture
+def object_id(created_object):
+    return created_object[1]

@@ -1,9 +1,3 @@
-from faker import Faker
-
-faker = Faker()
-
-sizes = ['small', 'medium', 'big', 'huge']
-
 create_data = [
     {
         'data': {

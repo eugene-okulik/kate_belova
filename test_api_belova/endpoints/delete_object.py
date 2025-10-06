@@ -14,7 +14,7 @@ class DeleteObject(BaseAPI):
         self.actual_message = None
 
     @allure.step('Send DELETE request to delete object by its ID')
-    def delete_response(self):
+    def delete_object(self):
         self.response = requests.delete(self.url)
         self.status_code = self.response.status_code
         self.actual_message = self.response.text

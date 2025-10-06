@@ -1,9 +1,7 @@
-from json import JSONDecodeError
-
 import allure
 import requests
 
-from test_api_belova.models import ResponseObjectModel
+from test_api_belova.schemas import ResponseObjectSchema
 
 
 class BaseAPI:
@@ -28,7 +26,7 @@ class BaseAPI:
 
     @allure.step('Assert object ID in response is the one sent in request')
     def assert_object_id(self, object_id):
-        self.object_data = ResponseObjectModel(**self.json)
+        self.object_data = ResponseObjectSchema(**self.json)
         response_data = self.object_data.model_dump()
 
         actual_id = response_data['id']
@@ -38,7 +36,7 @@ class BaseAPI:
 
     @allure.step('Assert object name in response is the one sent in request')
     def assert_object_name(self, data):
-        self.object_data = ResponseObjectModel(**self.json)
+        self.object_data = ResponseObjectSchema(**self.json)
         response_data = self.object_data.model_dump()
 
         actual_name = response_data['name']
@@ -49,7 +47,7 @@ class BaseAPI:
 
     @allure.step('Assert object data in response is the one sent in request')
     def assert_object_data(self, data):
-        self.object_data = ResponseObjectModel(**self.json)
+        self.object_data = ResponseObjectSchema(**self.json)
         responce_data = self.object_data.model_dump()
 
         actual_data = responce_data['data']

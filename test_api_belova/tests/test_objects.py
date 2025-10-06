@@ -4,12 +4,10 @@ import pytest
 from test_api_belova.endpoints import (
     CreateObject,
     DeleteObject,
-    GetObjects,
-    GetObject,
     UpdateObject,
     PartiallyUpdateObject,
 )
-from test_api_belova.models import RequestObjectModel
+from test_api_belova.schemas import RequestObjectSchema
 from test_api_belova.test_data import create_data, update_data, patch_data
 
 
@@ -21,10 +19,8 @@ class TestObjects:
     @allure.title('Получение всех объектов')
     @pytest.mark.smoke
     @pytest.mark.get
-    def test_get_all_objects(self):
-        get_objects_api = GetObjects()
-        get_objects_api.get_response()
-
+    def test_get_all_objects(self, get_objects_api):
+        get_objects_api.get_objects()
         get_objects_api.assert_response_is_200()
         get_objects_api.assert_has_objects()
 
@@ -33,13 +29,12 @@ class TestObjects:
     @allure.title('Получение одного объекта по его id')
     @pytest.mark.smoke
     @pytest.mark.get
-    def test_get_object(self, object_data):
-        data, id = object_data
-        get_object_api = GetObject(id)
-        get_object_api.get_response()
+    def test_get_object(self, created_object, get_object_api):
+        data, obj_id = created_object
+        get_object_api.get_object(obj_id)
 
         get_object_api.assert_response_is_200()
-        get_object_api.assert_object_id(id)
+        get_object_api.assert_object_id(obj_id)
         get_object_api.assert_object_name(data)
         get_object_api.assert_object_data(data)
 
@@ -55,31 +50,28 @@ class TestObjects:
     )
     def test_create_new_object(self, test_data):
         create_object_api = CreateObject()
-        create_object_data = RequestObjectModel(**test_data).model_dump()
-        create_object_api.post_response(create_object_data)
+        create_object_data = RequestObjectSchema(**test_data).model_dump()
+        create_object_api.create_object(create_object_data)
 
         create_object_api.assert_response_is_200()
         create_object_api.assert_object_name(create_object_data)
         create_object_api.assert_object_data(create_object_data)
 
-        id = create_object_api.id
-        delete_object_api = DeleteObject(id)
-        delete_object_api.delete_response()
-        delete_object_api.assert_response_is_200()
-        delete_object_api.assert_delete_message()
+        obj_id = create_object_api.id
+        delete_object_api = DeleteObject(obj_id)
+        delete_object_api.delete_object()
 
     @allure.feature('Objects')
     @allure.story('Update object')
     @allure.title('Полная замена (обновление) объекта по его id')
     @pytest.mark.update
-    def test_update_object(self, object_data):
-        id = object_data[1]
-        update_object_api = UpdateObject(id)
-        update_object_data = RequestObjectModel(**update_data).model_dump()
-        update_object_api.put_response(update_object_data)
+    def test_update_object(self, object_id):
+        update_object_api = UpdateObject(object_id)
+        update_object_data = RequestObjectSchema(**update_data).model_dump()
+        update_object_api.update_object(update_object_data)
 
         update_object_api.assert_response_is_200()
-        update_object_api.assert_object_id(id)
+        update_object_api.assert_object_id(object_id)
         update_object_api.assert_object_name(update_object_data)
         update_object_api.assert_object_data(update_object_data)
 
@@ -87,17 +79,17 @@ class TestObjects:
     @allure.story('Partially update object')
     @allure.title('Частичная замена (одного или нескольких полей) объекта')
     @pytest.mark.partially_update
-    def test_partially_update_object(self, object_data):
-        data, id = object_data
-        update_object_api = PartiallyUpdateObject(id)
-        update_object_data = RequestObjectModel(**patch_data).model_dump(
+    def test_partially_update_object(self, created_object, object_id):
+        data = created_object[0]
+        update_object_api = PartiallyUpdateObject(object_id)
+        update_object_data = RequestObjectSchema(**patch_data).model_dump(
             exclude_none=True
         )
-        update_object_api.patch_response(update_object_data)
+        update_object_api.partially_update_object(update_object_data)
         data.update(update_object_data)
 
         update_object_api.assert_response_is_200()
-        update_object_api.assert_object_id(id)
+        update_object_api.assert_object_id(object_id)
         update_object_api.assert_object_name(data)
         update_object_api.assert_object_data(data)
 
@@ -106,18 +98,12 @@ class TestObjects:
     @allure.title('Удаление объекта')
     @pytest.mark.smoke
     @pytest.mark.delete
-    def test_delete_object(self):
-        create_object_api = CreateObject()
-        create_object_data = RequestObjectModel(**create_data[0]).model_dump()
-        create_object_api.post_response(create_object_data)
-
-        id = create_object_api.id
-        delete_object_api = DeleteObject(id)
-        delete_object_api.delete_response()
+    def test_delete_object(self, object_id, get_object_api):
+        delete_object_api = DeleteObject(object_id)
+        delete_object_api.delete_object()
         delete_object_api.assert_response_is_200()
         delete_object_api.assert_delete_message()
 
-        get_object_api = GetObject(id)
-        get_object_api.get_response()
+        get_object_api.get_object(object_id)
         get_object_api.assert_response_is_404()
         get_object_api.assert_error_message()
