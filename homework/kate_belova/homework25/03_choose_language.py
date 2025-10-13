@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.support.select import Select
 
 from homework.kate_belova.homework25.browser_setup import browser
