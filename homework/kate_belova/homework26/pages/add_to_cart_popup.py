@@ -39,7 +39,9 @@ class AddToCartPopup(BasePage):
         price_text = price_element.text.strip()
         start_idx = price_text.find('$')
         if start_idx != -1:
-            return price_text[start_idx + 1 :].strip()
+            # fmt: off
+            return price_text[start_idx + 1:].strip()
+            # fmt: on
         return price_text
 
     @property
