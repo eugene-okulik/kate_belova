@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 
@@ -15,7 +13,7 @@ class TestMainPage:
         product_page.click_add_to_cart()
         add_to_cart_popup.wait_for_popup()
         add_to_cart_popup.click_continue_shopping()
-        time.sleep(1)
+        add_to_cart_popup.wait_for_popup_to_disappear()
         product_page.close_product_page_return_to_main()
 
         main_page.open_shopping_cart()

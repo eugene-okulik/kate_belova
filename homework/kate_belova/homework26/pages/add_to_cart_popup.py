@@ -56,6 +56,14 @@ class AddToCartPopup(BasePage):
             )
         )
 
+    @allure.step('Wait for popup "Add to cart" to disappear')
+    def wait_for_popup_to_disappear(self):
+        self.wait.until_not(
+            self.ec.presence_of_element_located(
+                self.add_to_cart_popup_header_locator
+            )
+        )
+
     @allure.step('Click continue shopping button')
     def click_continue_shopping(self):
         self.wait.until(
