@@ -1,0 +1,15 @@
+browserType: chromium
+useSystemBrowser: true
+launch:
+  channel: chrome
+  headless: false
+  args:
+    - "--window-size=1920,1080"
+    - "--lang=en-US"
+context:
+  no_viewport: true
+  locale: en-US
+  extra_http_headers:
+    Accept-Language: "en-US,en;q=0.9"
+
+
