@@ -1,0 +1,7 @@
+browserType: chromium
+useSystemBrowser: true
+launch:
+  channel: chrome
+  headless: true
+  args:
+    - "--lang=en-US"
