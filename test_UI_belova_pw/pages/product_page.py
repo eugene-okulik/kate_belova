@@ -117,7 +117,7 @@ class ProductPage(BasePage):
         actual_href = terms_link_element.get_attribute('href')
 
         if actual_href.startswith('/'):
-            actual_full_url = f'{self.base_url.rstrip('/')}{actual_href}'
+            actual_full_url = f'{self.base_url.rstrip("/")}{actual_href}'
         else:
             actual_full_url = actual_href
 
