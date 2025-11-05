@@ -1,0 +1,19 @@
+Go to first line in file: g
+Go to last line in file: G
+
+Forward one window: f / Space / z
+
+Forward one line: e / CTRL + E / j
+Backward one line: y / CTRL + Y / k / CTRL + K / CTRL + P
+
+Search forward for matching line: /pattern
+For ex:
+man ls
+/color
+n - next
+N - previous
+
+Search backward for matching line: ?pattern
+
+Repeat previous search: n
+Repeat previous search in reverse direction: N
