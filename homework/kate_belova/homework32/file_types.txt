@@ -1,0 +1,13 @@
+/dev/null - crw-rw-rw-, character device,
+/dev/zero - crw-rw-rw-, character device,
+/dev/sda - No such file or directory,
+/dev/tty - crw-rw-rw-, character device
+
+/root - drwxr-xr-x, directory
+
+/etc/passwd - -rw-r--r--, binary or text file (regular file)
+
+/proc/mounts - lrwxrwxrwx, link file like shortcut on Desktop (symbolic link)
+
+/bin/ls - -rwxr-xr-x, binary or text file (regular file)
+/bin/zcat - -rwxr-xr-x, binary or text file (regular file)
