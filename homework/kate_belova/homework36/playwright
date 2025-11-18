@@ -1,0 +1,207 @@
+Started by user Белова Екатерина Ивановна
+Obtained Jenkinsfile from git https://github.com/kate-belova/testshop_playwright_tests.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/TestShop-Playwright-tests
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/TestShop-Playwright-tests/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/kate-belova/testshop_playwright_tests.git # timeout=10
+Fetching upstream changes from https://github.com/kate-belova/testshop_playwright_tests.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/kate-belova/testshop_playwright_tests.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 381171e93bc395893706552670158a69072589c3 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 381171e93bc395893706552670158a69072589c3 # timeout=10
+Commit message: "Jenkinsfile changed"
+ > git rev-list --no-walk b302d61183f0c77a33c485ea9ee6ad3867384367 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/TestShop-Playwright-tests/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/kate-belova/testshop_playwright_tests.git # timeout=10
+Fetching upstream changes from https://github.com/kate-belova/testshop_playwright_tests.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/kate-belova/testshop_playwright_tests.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 381171e93bc395893706552670158a69072589c3 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 381171e93bc395893706552670158a69072589c3 # timeout=10
+Commit message: "Jenkinsfile changed"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Setup Python Environment)
+[Pipeline] sh
++ python3 -m venv venv
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/TestShop-Playwright-tests/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/TestShop-Playwright-tests/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=$
++ PS1=(venv) $
++ export PS1
++ hash -r
++ pip install -r requirements.txt
+Requirement already satisfied: allure-pytest==2.15.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 1)) (2.15.0)
+Requirement already satisfied: allure-python-commons==2.15.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 2)) (2.15.0)
+Requirement already satisfied: attrs==25.4.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 3)) (25.4.0)
+Requirement already satisfied: black==25.9.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 4)) (25.9.0)
+Requirement already satisfied: certifi==2025.10.5 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 5)) (2025.10.5)
+Requirement already satisfied: charset-normalizer==3.4.4 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 6)) (3.4.4)
+Requirement already satisfied: click==8.3.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 7)) (8.3.0)
+Requirement already satisfied: colorama==0.4.6 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 8)) (0.4.6)
+Requirement already satisfied: execnet==2.1.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 9)) (2.1.1)
+Requirement already satisfied: greenlet==3.2.4 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 10)) (3.2.4)
+Requirement already satisfied: idna==3.11 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 11)) (3.11)
+Requirement already satisfied: iniconfig==2.3.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 12)) (2.3.0)
+Requirement already satisfied: mypy_extensions==1.1.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 13)) (1.1.0)
+Requirement already satisfied: packaging==25.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 14)) (25.0)
+Requirement already satisfied: pathspec==0.12.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 15)) (0.12.1)
+Requirement already satisfied: platformdirs==4.5.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 16)) (4.5.0)
+Requirement already satisfied: playwright==1.55.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 17)) (1.55.0)
+Requirement already satisfied: pluggy==1.6.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 18)) (1.6.0)
+Requirement already satisfied: pyee==13.0.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 19)) (13.0.0)
+Requirement already satisfied: Pygments==2.19.2 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 20)) (2.19.2)
+Requirement already satisfied: pytest==8.4.2 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 21)) (8.4.2)
+Requirement already satisfied: pytest-base-url==2.1.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 22)) (2.1.0)
+Requirement already satisfied: pytest-playwright==0.7.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 23)) (0.7.1)
+Requirement already satisfied: pytest-rerunfailures==16.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 24)) (16.1)
+Requirement already satisfied: pytest-xdist==3.8.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 25)) (3.8.0)
+Requirement already satisfied: python-slugify==8.0.4 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 26)) (8.0.4)
+Requirement already satisfied: pytokens==0.2.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 27)) (0.2.0)
+Requirement already satisfied: PyYAML==6.0.3 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 28)) (6.0.3)
+Requirement already satisfied: requests==2.32.5 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 29)) (2.32.5)
+Requirement already satisfied: text-unidecode==1.3 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 30)) (1.3)
+Requirement already satisfied: typing_extensions==4.15.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 31)) (4.15.0)
+Requirement already satisfied: urllib3==2.5.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 32)) (2.5.0)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Tests)
+[Pipeline] sh
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/TestShop-Playwright-tests/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/TestShop-Playwright-tests/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=$
++ PS1=(venv) $
++ export PS1
++ hash -r
++ pytest
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-8.4.2, pluggy-1.6.0 -- /var/jenkins_home/workspace/TestShop-Playwright-tests/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /var/jenkins_home/workspace/TestShop-Playwright-tests
+configfile: pytest.ini
+plugins: allure-pytest-2.15.0, base-url-2.1.0, playwright-0.7.1, rerunfailures-16.1, xdist-3.8.0
+created: 4/4 workers
+4 workers [19 items]
+
+scheduling tests via LoadScheduling
+
+tests/desks_tests.py::TestDesksPage::test_desks_search_success[table]
+tests/desks_tests.py::TestDesksPage::test_desks_search_success[desk]
+tests/cart_tests.py::TestCartPage::test_add_product_to_cart_by_hover_success[11]
+tests/cart_tests.py::TestCartPage::test_empty_cart
+[gw0] PASSED tests/cart_tests.py::TestCartPage::test_empty_cart
+tests/cart_tests.py::TestCartPage::test_add_product_to_cart_by_hover_success[10]
+[gw3] PASSED tests/desks_tests.py::TestDesksPage::test_desks_search_success[table]
+tests/desks_tests.py::TestDesksPage::test_desks_search_success[screen]
+[gw2] PASSED tests/desks_tests.py::TestDesksPage::test_desks_search_success[desk]
+tests/desks_tests.py::TestDesksPage::test_desks_search_success[corner]
+[gw1] PASSED tests/cart_tests.py::TestCartPage::test_add_product_to_cart_by_hover_success[11]
+tests/cart_tests.py::TestCartPage::test_remove_product_from_cart_success
+[gw0] PASSED tests/cart_tests.py::TestCartPage::test_add_product_to_cart_by_hover_success[10]
+tests/desks_tests.py::TestDesksPage::test_switch_to_components_and_back_success
+[gw3] PASSED tests/desks_tests.py::TestDesksPage::test_desks_search_success[screen]
+tests/desks_tests.py::TestDesksPage::test_sort_desks[2]
+[gw2] PASSED tests/desks_tests.py::TestDesksPage::test_desks_search_success[corner]
+tests/desks_tests.py::TestDesksPage::test_sort_desks[3]
+[gw1] PASSED tests/cart_tests.py::TestCartPage::test_remove_product_from_cart_success
+tests/desks_tests.py::TestDesksPage::test_sort_desks[4]
+[gw0] PASSED tests/desks_tests.py::TestDesksPage::test_switch_to_components_and_back_success
+tests/product_page_tests.py::TestProductPage::test_product_details
+[gw3] PASSED tests/desks_tests.py::TestDesksPage::test_sort_desks[2]
+tests/product_page_tests.py::TestProductPage::test_add_product_to_cart_from_product_page_success[0-5-235.0]
+[gw2] PASSED tests/desks_tests.py::TestDesksPage::test_sort_desks[3]
+tests/product_page_tests.py::TestProductPage::test_add_product_to_cart_from_product_page_success[2-5-602.5]
+[gw1] PASSED tests/desks_tests.py::TestDesksPage::test_sort_desks[4]
+tests/product_page_tests.py::TestProductPage::test_product_page_search_success[desk]
+[gw0] PASSED tests/product_page_tests.py::TestProductPage::test_product_details
+tests/product_page_tests.py::TestProductPage::test_product_page_search_success[corner]
+[gw3] PASSED tests/product_page_tests.py::TestProductPage::test_add_product_to_cart_from_product_page_success[0-5-235.0]
+tests/product_page_tests.py::TestProductPage::test_product_page_search_success[table]
+[gw2] PASSED tests/product_page_tests.py::TestProductPage::test_add_product_to_cart_from_product_page_success[2-5-602.5]
+tests/product_page_tests.py::TestProductPage::test_product_page_search_success[screen]
+[gw1] PASSED tests/product_page_tests.py::TestProductPage::test_product_page_search_success[desk]
+[gw0] PASSED tests/product_page_tests.py::TestProductPage::test_product_page_search_success[corner]
+[gw3] PASSED tests/product_page_tests.py::TestProductPage::test_product_page_search_success[table]
+[gw2] PASSED tests/product_page_tests.py::TestProductPage::test_product_page_search_success[screen]
+
+======================== 19 passed in 99.11s (0:01:39) =========================
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] allure
+[TestShop-Playwright-tests] $ /var/jenkins_home/tools/ru.yandex.qatools.allure.jenkins.tools.AllureCommandlineInstallation/allure/bin/allure generate /var/jenkins_home/workspace/TestShop-Playwright-tests/ALLURE-RESULTS -c -o /var/jenkins_home/workspace/TestShop-Playwright-tests/allure-report
+Report successfully generated to /var/jenkins_home/workspace/TestShop-Playwright-tests/allure-report
+Allure report was successfully generated.
+Creating artifact for the build.
+Artifact was added to the build.
+[Pipeline] echo
+✅ All tests passed successfully!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

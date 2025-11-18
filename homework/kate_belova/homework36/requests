@@ -1,0 +1,237 @@
+Started by user Белова Екатерина Ивановна
+Obtained Jenkinsfile from git https://github.com/kate-belova/memesapi_tests
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/MemesAPI-tests
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/MemesAPI-tests/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/kate-belova/memesapi_tests # timeout=10
+Fetching upstream changes from https://github.com/kate-belova/memesapi_tests
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/kate-belova/memesapi_tests +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 844010d53b71162f7dae2b3521c85d7210e44a24 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 844010d53b71162f7dae2b3521c85d7210e44a24 # timeout=10
+Commit message: "Test data changed"
+ > git rev-list --no-walk 844010d53b71162f7dae2b3521c85d7210e44a24 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/MemesAPI-tests/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/kate-belova/memesapi_tests # timeout=10
+Fetching upstream changes from https://github.com/kate-belova/memesapi_tests
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/kate-belova/memesapi_tests +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 844010d53b71162f7dae2b3521c85d7210e44a24 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 844010d53b71162f7dae2b3521c85d7210e44a24 # timeout=10
+Commit message: "Test data changed"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Setup Python Environment)
+[Pipeline] sh
++ python3 -m venv venv
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/MemesAPI-tests/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/MemesAPI-tests/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=$
++ PS1=(venv) $
++ export PS1
++ hash -r
++ pip install -r requirements.txt
+Requirement already satisfied: allure-pytest==2.15.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 1)) (2.15.0)
+Requirement already satisfied: allure-python-commons==2.15.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 2)) (2.15.0)
+Requirement already satisfied: annotated-types==0.7.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 3)) (0.7.0)
+Requirement already satisfied: attrs==25.4.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 4)) (25.4.0)
+Requirement already satisfied: black==25.9.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 5)) (25.9.0)
+Requirement already satisfied: certifi==2025.10.5 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 6)) (2025.10.5)
+Requirement already satisfied: charset-normalizer==3.4.3 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 7)) (3.4.3)
+Requirement already satisfied: click==8.3.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 8)) (8.3.0)
+Requirement already satisfied: colorama==0.4.6 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 9)) (0.4.6)
+Requirement already satisfied: execnet==2.1.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 10)) (2.1.1)
+Requirement already satisfied: idna==3.10 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 11)) (3.10)
+Requirement already satisfied: iniconfig==2.1.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 12)) (2.1.0)
+Requirement already satisfied: mypy_extensions==1.1.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 13)) (1.1.0)
+Requirement already satisfied: packaging==25.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 14)) (25.0)
+Requirement already satisfied: pathspec==0.12.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 15)) (0.12.1)
+Requirement already satisfied: platformdirs==4.5.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 16)) (4.5.0)
+Requirement already satisfied: pluggy==1.6.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 17)) (1.6.0)
+Requirement already satisfied: pydantic==2.12.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 18)) (2.12.0)
+Requirement already satisfied: pydantic_core==2.41.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 19)) (2.41.1)
+Requirement already satisfied: Pygments==2.19.2 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 20)) (2.19.2)
+Requirement already satisfied: pytest==8.4.2 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 21)) (8.4.2)
+Requirement already satisfied: pytest-rerunfailures==16.0.1 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 22)) (16.0.1)
+Requirement already satisfied: pytest-xdist==3.8.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 23)) (3.8.0)
+Requirement already satisfied: pytokens==0.1.10 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 24)) (0.1.10)
+Requirement already satisfied: requests==2.32.5 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 25)) (2.32.5)
+Requirement already satisfied: typing-inspection==0.4.2 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 26)) (0.4.2)
+Requirement already satisfied: typing_extensions==4.15.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 27)) (4.15.0)
+Requirement already satisfied: urllib3==2.5.0 in ./venv/lib/python3.13/site-packages (from -r requirements.txt (line 28)) (2.5.0)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Tests)
+[Pipeline] sh
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/MemesAPI-tests/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/MemesAPI-tests/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=$
++ PS1=(venv) $
++ export PS1
++ hash -r
++ pytest
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-8.4.2, pluggy-1.6.0 -- /var/jenkins_home/workspace/MemesAPI-tests/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /var/jenkins_home/workspace/MemesAPI-tests
+configfile: pytest.ini
+plugins: allure-pytest-2.15.0, rerunfailures-16.0.1, xdist-3.8.0
+created: 4/4 workers
+4 workers [36 items]
+
+scheduling tests via LoadScheduling
+
+tests/test_authorization.py::TestAuth::test_successful_authorization[name_with_spaces]
+tests/test_authorization.py::TestAuth::test_successful_authorization[valid_name_kate]
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_success[normal_meme_with_telegram_url]
+tests/test_authorization.py::TestAuth::test_successful_authorization[long_name]
+[gw1] PASSED tests/test_authorization.py::TestAuth::test_successful_authorization[name_with_spaces]
+tests/test_authorization.py::TestAuth::test_successful_authorization[name_with_numbers]
+[gw2] PASSED tests/test_authorization.py::TestAuth::test_successful_authorization[long_name]
+tests/test_authorization.py::TestAuth::test_authorization_without_necessary_fields
+[gw2] PASSED tests/test_authorization.py::TestAuth::test_authorization_without_necessary_fields
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_wrong_url
+[gw0] PASSED tests/test_authorization.py::TestAuth::test_successful_authorization[valid_name_kate]
+[gw1] PASSED tests/test_authorization.py::TestAuth::test_successful_authorization[name_with_numbers]
+tests/test_authorization.py::TestAuth::test_successful_authorization[empty_name]
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_success[maximal_meme_long_text_multiple_tags]
+[gw3] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_success[normal_meme_with_telegram_url]
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_success[minimal_meme_empty_fields]
+[gw0] PASSED tests/test_authorization.py::TestAuth::test_successful_authorization[empty_name]
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[missing_url_field]
+[gw2] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_wrong_url
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[missing_info_field]
+[gw3] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_success[minimal_meme_empty_fields]
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[all_fields_missing]
+[gw0] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[missing_url_field]
+[gw2] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[missing_info_field]
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[missing_info_and_text_fields]
+tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_success
+[gw1] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_success[maximal_meme_long_text_multiple_tags]
+tests/test_create_meme.py::TestCreateMeme::test_post_meme_without_auth
+[gw1] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_without_auth
+tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_with_unexisting_id
+[gw3] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[all_fields_missing]
+tests/test_delete_meme.py::TestDeleteMeme::test_delete_another_user_meme
+[gw0] PASSED tests/test_create_meme.py::TestCreateMeme::test_post_meme_with_invalid_data[missing_info_and_text_fields]
+tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_with_wrong_url
+[gw1] PASSED tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_with_unexisting_id
+tests/test_read_meme.py::TestReadMeme::test_get_all_memes_success
+[gw2] PASSED tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_success
+tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_without_auth
+[gw0] PASSED tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_with_wrong_url
+tests/test_read_meme.py::TestReadMeme::test_get_all_memes_without_auth
+[gw0] PASSED tests/test_read_meme.py::TestReadMeme::test_get_all_memes_without_auth
+tests/test_read_meme.py::TestReadMeme::test_get_meme_by_wrong_url
+[gw2] PASSED tests/test_delete_meme.py::TestDeleteMeme::test_delete_meme_without_auth
+tests/test_read_meme.py::TestReadMeme::test_get_meme_with_unexisting_id
+[gw0] PASSED tests/test_read_meme.py::TestReadMeme::test_get_meme_by_wrong_url
+tests/test_read_meme.py::TestReadMeme::test_get_meme_without_auth
+[gw2] PASSED tests/test_read_meme.py::TestReadMeme::test_get_meme_with_unexisting_id
+tests/test_read_meme.py::TestReadMeme::test_get_meme_with_string_id
+[gw3] PASSED tests/test_delete_meme.py::TestDeleteMeme::test_delete_another_user_meme
+tests/test_read_meme.py::TestReadMeme::test_get_all_memes_with_wrong_url
+[gw2] PASSED tests/test_read_meme.py::TestReadMeme::test_get_meme_with_string_id
+tests/test_update_meme.py::TestUpdateMeme::test_put_another_user_meme
+[gw0] PASSED tests/test_read_meme.py::TestReadMeme::test_get_meme_without_auth
+tests/test_update_meme.py::TestUpdateMeme::test_put_meme_success
+[gw3] PASSED tests/test_read_meme.py::TestReadMeme::test_get_all_memes_with_wrong_url
+tests/test_update_meme.py::TestUpdateMeme::test_put_meme_without_auth
+[gw3] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_meme_without_auth
+tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_all_fields]
+[gw0] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_meme_success
+tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_url_field]
+[gw2] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_another_user_meme
+tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_wrong_url
+[gw3] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_all_fields]
+tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_text_and_info_fields]
+[gw0] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_url_field]
+tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_info_fields]
+[gw2] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_wrong_url
+[gw3] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_text_and_info_fields]
+[gw0] PASSED tests/test_update_meme.py::TestUpdateMeme::test_put_meme_with_invalid_data[missing_info_fields]
+[gw1] PASSED tests/test_read_meme.py::TestReadMeme::test_get_all_memes_success
+tests/test_read_meme.py::TestReadMeme::test_get_meme_by_id_success
+[gw1] PASSED tests/test_read_meme.py::TestReadMeme::test_get_meme_by_id_success
+
+============================= 36 passed in 22.18s ==============================
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] allure
+[MemesAPI-tests] $ /var/jenkins_home/tools/ru.yandex.qatools.allure.jenkins.tools.AllureCommandlineInstallation/allure/bin/allure generate /var/jenkins_home/workspace/MemesAPI-tests/ALLURE-RESULTS -c -o /var/jenkins_home/workspace/MemesAPI-tests/allure-report
+Report successfully generated to /var/jenkins_home/workspace/MemesAPI-tests/allure-report
+Allure report was successfully generated.
+Creating artifact for the build.
+Artifact was added to the build.
+[Pipeline] echo
+✅ All tests passed successfully!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
